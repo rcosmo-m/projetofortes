@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoPar - Conectando para um futuro sustentável</title>
+    <meta name="description" content="Plataforma que conecta empresas e instituições para reciclagem e gestão sustentável de resíduos">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/theme-dark.css">
+    <link rel="stylesheet" href="../css/map-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Preconnect para melhorar performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://maps.googleapis.com">
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♻️</text></svg>">
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Add the new CSS and JS files to the head section -->
+    <link rel="stylesheet" href="../css/logo-animations.css">
+    <!-- Scripts -->
+    <script src="../js/login.js" defer></script>
+    <script src="../js/script.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+    <script src="../js/map.js" defer></script>
+    <script src="../js/charts.js" defer></script>
+</head>
+<body>
+    
+    <!-- Mensagens de feedback -->
+    <div id="toast-container"></div>
+
+    <div id="app">
+        <!-- Login Page (Default View) -->
+        <div id="login-page" class="page active">
+            <header>
+                <nav>
+                    <div class="logo">
+                        <i class="fas fa-recycle"></i> EcoPar
+                    </div>
+                    <ul class="nav-links">
+                        <li><a href="#home" aria-label="Ir para a seção inicial">Início</a></li>
+                        <li><a href="#about" aria-label="Ir para a seção sobre nós">Sobre nós</a></li>
+                        <li><a href="#register" aria-label="Ir para a seção de cadastro">Cadastre-se</a></li>
+                        <li><a href="#support" aria-label="Ir para a seção de suporte">Suporte</a></li>
+                        <li><button id="login-btn" class="btn-primary" aria-label="Abrir formulário de login">Login</button></li>
+                        <li><button class="theme-toggle" aria-label="Alternar tema claro/escuro"><i class="fas fa-moon"></i></button></li>
+                    </ul>
+                    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </button>
+                </nav>
+            </header>
+
+            <main>
+                <!-- Home Section -->
+                <section id="home" class="hero">
+                    <div class="hero-content animate__animated animate__fadeInLeft">
+                        <h1>Conectando empresas e instituições para um futuro sustentável</h1>
+                        <p>Facilitamos a conexão entre empresas que geram resíduos recicláveis e instituições que os coletam para reciclagem.</p>
+                        <button class="btn-primary pulse-animation" onclick="document.getElementById('register').scrollIntoView({behavior: 'smooth'})">Comece agora</button>
+                    </div>
+                    <div class="hero-image animate__animated animate__fadeInRight">
+                        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sustentabilidade" loading="lazy">
+                    </div>
+                </section>
+
+                <!-- About Section -->
+                <section id="about" class="about">
+                    <h2 class="section-title">Sobre nós</h2>
+                    <div class="about-content">
+                        <div class="about-image animate__animated animate__fadeIn" data-animate="animate__fadeIn">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Nossa equipe" loading="lazy">
+                        </div>
+                        <div class="about-text animate__animated animate__fadeIn" data-animate="animate__fadeIn">
+                            <p>Somos uma equipe dedicada a criar soluções sustentáveis para o gerenciamento de resíduos. Nossa plataforma conecta empresas que geram resíduos recicláveis com instituições que os coletam, facilitando o processo de reciclagem e contribuindo para um mundo mais sustentável.</p>
+                            <p>Projeto desenvolvido por: Alan Oliveira, Clara Teixeira, Marina Rodrigues, Miguel Vithor e Raphael Cosmo.</p>
+                            <div class="stats-container">
+                                <div class="stat-item">
+                                    <span class="stat-number" data-count="150">150</span>
+                                    <span class="stat-label">Empresas</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number" data-count="50">50</span>
+                                    <span class="stat-label">Instituições</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number" data-count="5000">5000</span>
+                                    <span class="stat-label">Kg Reciclados</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Register Section -->
+                <section id="register" class="register">
+                    <h2 class="section-title">Cadastre-se</h2>
+                    <div class="register-options">
+                        <div class="register-card animate__animated" data-animate="animate__fadeInUp">
+                            <i class="fas fa-building"></i>
+                            <h3>Sou uma Empresa</h3>
+                            <p>Cadastre sua empresa para gerenciar seus resíduos de forma sustentável.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Gerencie seus pontos de coleta</li>
+                                <li><i class="fas fa-check"></i> Agende coletas com instituições</li>
+                                <li><i class="fas fa-check"></i> Acompanhe suas estatísticas de reciclagem</li>
+                            </ul>
+                            <button class="btn-secondary" data-tippy-content="Cadastre-se como empresa para gerenciar seus resíduos">Cadastrar como Empresa</button>
+                        </div>
+                        <div class="register-card animate__animated" data-animate="animate__fadeInUp" data-delay="200">
+                            <i class="fas fa-recycle"></i>
+                            <h3>Sou uma Instituição</h3>
+                            <p>Cadastre sua instituição para coletar resíduos recicláveis.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Encontre empresas com resíduos</li>
+                                <li><i class="fas fa-check"></i> Gerencie agendamentos de coleta</li>
+                                <li><i class="fas fa-check"></i> Monitore o impacto ambiental</li>
+                            </ul>
+                            <button class="btn-secondary" data-tippy-content="Cadastre-se como instituição para coletar resíduos">Cadastrar como Instituição</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Support Section -->
+                <section id="support" class="support">
+                    <h2 class="section-title">Suporte</h2>
+                    <div class="support-content">
+                        <div class="support-form animate__animated" data-animate="animate__fadeIn">
+                            <h3>Entre em contato</h3>
+                            <form id="contact-form">
+                                <div class="form-group">
+                                    <label for="name">Nome</label>
+                                    <input type="text" id="name" required aria-required="true">
+                                    <span class="form-error" id="name-error"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" required aria-required="true">
+                                    <span class="form-error" id="email-error"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Mensagem</label>
+                                    <textarea id="message" rows="5" required aria-required="true"></textarea>
+                                    <span class="form-error" id="message-error"></span>
+                                </div>
+                                <button type="submit" class="btn-primary">Enviar</button>
+                            </form>
+                        </div>
+                        <div class="support-info animate__animated" data-animate="animate__fadeIn" data-delay="200">
+                            <h3>Informações de contato</h3>
+                            <p><i class="fas fa-envelope"></i> contato@ecopar.com</p>
+                            <p><i class="fas fa-phone"></i> (11) 1234-5678</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo, SP</p>
+                            <div class="faq-section">
+                                <h3>Perguntas Frequentes</h3>
+                                <div class="accordion">
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">Como funciona o processo de coleta?</div>
+                                        <div class="accordion-content">
+                                            <p>As empresas cadastram seus pontos de coleta e as instituições podem agendar coletas. Após a confirmação, a instituição realiza a coleta na data e horário agendados.</p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">Quais tipos de resíduos são aceitos?</div>
+                                        <div class="accordion-content">
+                                            <p>Aceitamos diversos tipos de resíduos recicláveis, como papel, plástico, metal, vidro, eletrônicos e, em alguns casos, resíduos orgânicos para compostagem.</p>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <div class="accordion-header">O serviço tem algum custo?</div>
+                                        <div class="accordion-content">
+                                            <p>O cadastro na plataforma é gratuito. As instituições e empresas podem negociar entre si os termos da coleta, incluindo possíveis custos ou benefícios.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Login Modal -->
+            <div id="login-modal" class="modal" aria-labelledby="login-title" aria-modal="true" role="dialog">
+                <div class="modal-content animate__animated animate__fadeInDown">
+                    <button class="close" aria-label="Fechar">&times;</button>
+                    <h2 id="login-title">Login</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" required aria-required="true">
+                            <span class="form-error" id="login-email-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Senha</label>
+                            <div class="password-input">
+                                <input type="password" id="login-password" required aria-required="true">
+                                <button type="button" class="toggle-password" aria-label="Mostrar senha">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <span class="form-error" id="login-password-error"></span>
+                        </div>
+                        <div class="form-error" id="login-error"></div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Entrar</button>
+                            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Institution Dashboard -->
+        <div id="instituicao-dashboard" class="page">
+            <div class="dashboard-container">
+                <div class="sidebar">
+                    <div class="sidebar-header">
+                        <div class="logo">
+                            <i class="fas fa-recycle"></i> EcoPar
+                        </div>
+                        <span class="user-type">Instituição</span>
+                    </div>
+                    <div class="sidebar-nav">
+                        <ul>
+                            <li class="active" data-page="instituicao-home">
+                                <i class="fas fa-home"></i> Dashboard
+                            </li>
+                            <li data-page="instituicao-empresas">
+                                <i class="fas fa-building"></i> Empresas
+                            </li>
+                            <li data-page="instituicao-agendamentos">
+                                <i class="fas fa-calendar-alt"></i> Agendamentos
+                            </li>
+                            <li data-page="instituicao-pontos">
+                                <i class="fas fa-map-marker-alt"></i> Pontos de Coleta
+                            </li>
+                            <li data-page="instituicao-mensagens">
+                                <i class="fas fa-envelope"></i> Mensagens
+                            </li>
+                            <li data-page="instituicao-perfil">
+                                <i class="fas fa-user"></i> Perfil
+                            </li>
+                            <li id="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i> Sair
+                            </li>
+                            <li class="theme-toggle">
+                                <i class="fas fa-moon"></i> Tema
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dashboard-content">
+                    <!-- Dashboard Home -->
+                    <div id="instituicao-home" class="dashboard-page active">
+                        <h1>Dashboard</h1>
+                        <div class="dashboard-cards">
+                            <div class="dashboard-card">
+                                <i class="fas fa-building"></i>
+                                <h3>Empresas Parceiras</h3>
+                                <p>12</p>
+                            </div>
+                            <div class="dashboard-card">
+                                <i class="fas fa-calendar-check"></i>
+                                <h3>Coletas Realizadas</h3>
+                                <p>48</p>
+                            </div>
+                            <div class="dashboard-card">
+                                <i class="fas fa-weight"></i>
+                                <h3>Resíduos Coletados</h3>
+                                <p>1.2t</p>
+                            </div>
+                            <div class="dashboard-card">
+                                <i class="fas fa-calendar-alt"></i>
+                                <h3>Agendamentos Pendentes</h3>
+                                <p>5</p>
+                            </div>
+                        </div>
+
+                        <div class="recent-activity">
+                            <h2>Atividades Recentes</h2>
+                            <ul>
+                                <li>
+                                    <div class="activity-icon">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4>Coleta Realizada</h4>
+                                        <p>Empresa XYZ - 50kg de papel e plástico</p>
+                                        <span class="activity-time">Hoje, 10:30</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="activity-icon">
+                                        <i class="fas fa-calendar-plus"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4>Novo Agendamento</h4>
+                                        <p>Empresa ABC - 30kg de metal</p>
+                                        <span class="activity-time">Ontem, 15:45</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="activity-icon">
+                                        <i class="fas fa-building"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4>Nova Empresa Parceira</h4>
+                                        <p>Empresa DEF se cadastrou na plataforma</p>
+                                        <span class="activity-time">2 dias atrás, 09:15</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="stats-container">
+                            <h2>Estatísticas de Coleta</h2>
+                            <div class="stats-chart">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Empresas Page -->
+                    <div id="instituicao-empresas" class="dashboard-page">
+                        <h1>Empresas Parceiras</h1>
+                        <div class="page-header">
+                            <div class="search-container">
+                                <input type="text" id="empresa-search" placeholder="Buscar empresa...">
+                                <button class="search-btn"><i class="fas fa-search"></i></button>
+                            </div>
+                            <div class="page-actions">
+                                <button class="btn-secondary"><i class="fas fa-filter"></i> Filtrar</button>
+                            </div>
+                        </div>
+
+                        <div class="empresas-list">
+                            <!-- Replace placeholder logos with SVG logos in the empresas list -->
+                            <div class="empresa-card">
+                                <div class="empresa-logo">
+                                    
+                                </div>
+                                <div class="empresa-info">
+                                    <h3>Empresa XYZ</h3>
+                                    <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+                                    <p><i class="fas fa-recycle"></i> Papel, Plástico, Metal</p>
+                                    <p><i class="fas fa-calendar-check"></i> 15 coletas realizadas</p>
+                                </div>
+                                <div class="empresa-actions">
+                                    <button class="btn-primary view-profile">Ver Perfil</button>
+                                </div>
+                            </div>
+
+                            <div class="empresa-card">
+                                <div class="empresa-logo">
+                                </div>
+                                <div class="empresa-info">
+                                    <h3>Empresa ABC</h3>
+                                    <p><i class="fas fa-map-marker-alt"></i> Rio de Janeiro, RJ</p>
+                                    <p><i class="fas fa-recycle"></i> Vidro, Eletrônicos</p>
+                                    <p><i class="fas fa-calendar-check"></i> 8 coletas realizadas</p>
+                                </div>
+                                <div class="empresa-actions">
+                                    <button class="btn-primary view-profile">Ver Perfil</button>
+                                </div>
+                            </div>
+                            <div class="empresa-card">
+                                <div class="empresa-logo">
+
+                                </div>
+                                <div class="empresa-info">
+                                    <h3>Empresa DEF</h3>
+                                    <p><i class="fas fa-map-marker-alt"></i> Belo Horizonte, MG</p>
+                                    <p><i class="fas fa-recycle"></i> Papel, Orgânicos</p>
+                                    <p><i class="fas fa-calendar-check"></i> 3 coletas realizadas</p>
+                                </div>
+                                <div class="empresa-actions">
+                                    <button class="btn-primary view-profile">Ver Perfil</button>
+                                </div>
+                            </div>
+
+                            <!-- Add a new empresa card with the JKL logo -->
+                            <div class="empresa-card">
+                                <div class="empresa-logo">
+                                </div>
+                                <div class="empresa-info">
+                                    <h3>Empresa JKL</h3>
+                                    <p><i class="fas fa-map-marker-alt"></i> Curitiba, PR</p>
+                                    <p><i class="fas fa-recycle"></i> Vidro, Papel, Plástico</p>
+                                    <p><i class="fas fa-calendar-check"></i> 6 coletas realizadas</p>
+                                </div>
+                                <div class="empresa-actions">
+                                    <button class="btn-primary view-profile">Ver Perfil</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Empresa Profile Page -->
+                    <div id="instituicao-empresa-profile" class="dashboard-page">
+                        <button class="back-btn"><i class="fas fa-arrow-left"></i> Voltar para Empresas</button>
+                        <div class="empresa-profile">
+                            <div class="empresa-profile-header">
+                                <div class="empresa-profile-logo">
+                                </div>
+                                <div class="empresa-profile-info">
+                                    <h2>Empresa XYZ</h2>
+                                    <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo, SP</p>
+                                    <p><i class="fas fa-phone"></i> (11) 1234-5678</p>
+                                    <p><i class="fas fa-envelope"></i> contato@empresaxyz.com</p>
+                                    <p><i class="fas fa-globe"></i> www.empresaxyz.com</p>
+                                    <div class="empresa-actions">
+                                        <button class="btn-primary"><i class="fas fa-calendar-plus"></i> Agendar Coleta</button>
+                                        <button class="btn-secondary"><i class="fas fa-envelope"></i> Enviar Mensagem</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="empresa-profile-details">
+                                <div class="tabs">
+                                    <div class="tab active" data-tab="empresa-info-tab">Informações</div>
+                                    <div class="tab" data-tab="empresa-pontos-tab">Pontos de Coleta</div>
+                                    <div class="tab" data-tab="empresa-coletas-tab">Histórico de Coletas</div>
+                                </div>
+                                <div class="tab-content">
+                                    <div id="empresa-info-tab" class="tab-pane active">
+                                        <div class="profile-section">
+                                            <h3>Sobre a Empresa</h3>
+                                            <p>A Empresa XYZ é uma empresa de tecnologia comprometida com práticas sustentáveis e responsabilidade ambiental. Fundada em 2010, temos trabalhado constantemente para reduzir nosso impacto ambiental e promover a reciclagem em todas as nossas operações.</p>
+                                        </div>
+                                        <div class="profile-section">
+                                            <h3>Tipos de Resíduos</h3>
+                                            <div class="residuos-tags">
+                                                <span class="tag">Papel</span>
+                                                <span class="tag">Plástico</span>
+                                                <span class="tag">Metal</span>
+                                                <span class="tag">Eletrônicos</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="empresa-pontos-tab" class="tab-pane">
+                                        <div class="profile-section">
+                                            <h3>Pontos de Coleta</h3>
+                                            <div class="pontos-coleta">
+                                                <div class="ponto-card">
+                                                    <h4>Sede</h4>
+                                                    <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo, SP</p>
+                                                    <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h</p>
+                                                    <p><i class="fas fa-recycle"></i> Papel, Plástico, Metal</p>
+                                                    <button class="btn-primary"><i class="fas fa-calendar-plus"></i> Agendar Coleta</button>
+                                                </div>
+                                                <div class="ponto-card">
+                                                    <h4>Filial</h4>
+                                                    <p><i class="fas fa-map-marker-alt"></i> Rua Augusta, 500 - São Paulo, SP</p>
+                                                    <p><i class="fas fa-clock"></i> Seg-Sex: 9h às 17h</p>
+                                                    <p><i class="fas fa-recycle"></i> Papel, Plástico</p>
+                                                    <button class="btn-primary"><i class="fas fa-calendar-plus"></i> Agendar Coleta</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="empresa-coletas-tab" class="tab-pane">
+                                        <div class="profile-section">
+                                            <h3>Histórico de Coletas</h3>
+                                            <table class="coletas-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Data</th>
+                                                        <th>Ponto de Coleta</th>
+                                                        <th>Resíduos</th>
+                                                        <th>Quantidade</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>10/05/2023</td>
+                                                        <td>Sede</td>
+                                                        <td>Papel, Plástico</td>
+                                                        <td>30kg</td>
+                                                        <td><span class="status completed">Concluída</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>25/04/2023</td>
+                                                        <td>Filial</td>
+                                                        <td>Papel</td>
+                                                        <td>15kg</td>
+                                                        <td><span class="status completed">Concluída</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>15/04/2023</td>
+                                                        <td>Sede</td>
+                                                        <td>Metal, Eletrônicos</td>
+                                                        <td>25kg</td>
+                                                        <td><span class="status completed">Concluída</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Agendamentos Page -->
+                    <div id="instituicao-agendamentos" class="dashboard-page">
+                        <h1>Agendamentos</h1>
+                        <div class="tabs">
+                            <div class="tab active" data-tab="agendamentos-pendentes">Pendentes</div>
+                            <div class="tab" data-tab="agendamentos-confirmados">Confirmados</div>
+                            <div class="tab" data-tab="agendamentos-concluidos">Concluídos</div>
+                        </div>
+
+                        <div class="tab-content">
+                            <div id="agendamentos-pendentes" class="tab-pane active">
+                                <div class="agendamento-card">
+                                    <!-- Replace placeholder logos in the agendamentos section -->
+                                    <div class="agendamento-header">
+                                        <div class="agendamento-empresa">
+                                            <h3>Empresa GHI</h3>
+                                        </div>
+                                        <span class="agendamento-status pending">Pendente</span>
+                                    </div>
+                                    <div class="agendamento-details">
+                                        <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo, SP</p>
+                                        <p><i class="fas fa-calendar-alt"></i> 15/05/2023, 14:00</p>
+                                        <p><i class="fas fa-recycle"></i> Papel, Plástico</p>
+                                        <p><i class="fas fa-weight"></i> Estimativa: 30kg</p>
+                                    </div>
+                                    <div class="agendamento-actions">
+                                        <button class="btn-primary"><i class="fas fa-check"></i> Confirmar</button>
+                                        <button class="btn-secondary"><i class="fas fa-times"></i> Recusar</button>
+                                    </div>
+                                </div>
+
+                                <div class="agendamento-card">
+                                    <div class="agendamento-header">
+                                        <div class="agendamento-empresa">
+                                            <h3>Empresa ABC</h3>
+                                        </div>
+                                        <span class="agendamento-status pending">Pendente</span>
+                                    </div>
+                                    <div class="agendamento-details">
+                                        <p><i class="fas fa-map-marker-alt"></i> Av. Rio Branco, 100 - Rio de Janeiro, RJ</p>
+                                        <p><i class="fas fa-calendar-alt"></i> 18/05/2023, 10:00</p>
+                                        <p><i class="fas fa-recycle"></i> Vidro, Eletrônicos</p>
+                                        <p><i class="fas fa-weight"></i> Estimativa: 20kg</p>
+                                    </div>
+                                    <div class="agendamento-actions">
+                                        <button class="btn-primary"><i class="fas fa-check"></i> Confirmar</button>
+                                        <button class="btn-secondary"><i class="fas fa-times"></i> Recusar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="agendamentos-confirmados" class="tab-pane">
+                                <div class="agendamento-card">
+                                    <div class="agendamento-header">
+                                        <div class="agendamento-empresa">
+                                            <h3>Empresa DEF</h3>
+                                        </div>
+                                        <span class="agendamento-status confirmed">Confirmado</span>
+                                    </div>
+                                    <div class="agendamento-details">
+                                        <p><i class="fas fa-map-marker-alt"></i> Av. Afonso Pena, 500 - Belo Horizonte, MG</p>
+                                        <p><i class="fas fa-calendar-alt"></i> 20/05/2023, 09:00</p>
+                                        <p><i class="fas fa-recycle"></i> Papel, Orgânicos</p>
+                                        <p><i class="fas fa-weight"></i> Estimativa: 25kg</p>
+                                    </div>
+                                    <div class="agendamento-actions">
+                                        <button class="btn-primary"><i class="fas fa-check-double"></i> Marcar como Concluído</button>
+                                        <button class="btn-secondary"><i class="fas fa-calendar-alt"></i> Reagendar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="agendamentos-concluidos" class="tab-pane">
+                                <div class="agendamento-card">
+                                    <div class="agendamento-header">
+                                        <div class="agendamento-empresa">
+                                            <h3>Empresa XYZ</h3>
+                                        </div>
+                                        <span class="agendamento-status completed">Concluído</span>
+                                    </div>
+                                    <div class="agendamento-details">
+                                        <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo, SP</p>
+                                        <p><i class="fas fa-calendar-alt"></i> 10/05/2023, 14:00</p>
+                                        <p><i class="fas fa-recycle"></i> Papel, Plástico</p>
+                                        <p><i class="fas fa-weight"></i> Coletado: 32kg</p>
+                                    </div>
+                                    <div class="agendamento-actions">
+                                        <button class="btn-secondary"><i class="fas fa-file-alt"></i> Ver Relatório</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pontos de Coleta Page -->
+                    <div id="instituicao-pontos" class="dashboard-page">
+                        <h1>Pontos de Coleta</h1>
+                        <div class="pontos-map">
+                            <div id="map-instituicao" class="map-container"></div>
+                            <div class="map-controls">
+                                <button class="map-control-btn" title="Zoom In"><i class="fas fa-plus"></i></button>
+                                <button class="map-control-btn" title="Zoom Out"><i class="fas fa-minus"></i></button>
+                                <button class="map-control-btn" title="Minha Localização"><i class="fas fa-location-arrow"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="pontos-list">
+                            <h2>Pontos de Coleta Disponíveis</h2>
+                            <div class="pontos-grid">
+                                <div class="ponto-card">
+                                    <div class="ponto-header">
+                                        <h4>Empresa XYZ - Sede</h4>
+                                        <span class="ponto-status active">Ativo</span>
+                                    </div>
+                                    <div class="ponto-details">
+                                        <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo, SP</p>
+                                        <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h</p>
+                                        <p><i class="fas fa-recycle"></i> Papel, Plástico, Metal</p>
+                                    </div>
+                                    <div class="ponto-actions">
+                                        <button class="btn-primary"><i class="fas fa-calendar-plus"></i> Agendar Coleta</button>
+                                    </div>
+                                </div>
+
+                                <div class="ponto-card">
+                                    <div class="ponto-header">
+                                        <h4>Empresa XYZ - Filial</h4>
+                                        <span class="ponto-status active">Ativo</span>
+                                    </div>
+                                    <div class="ponto-details">
+                                        <p><i class="fas fa-map-marker-alt"></i> Rua Augusta, 500 - São Paulo, SP</p>
+                                        <p><i class="fas fa-clock"></i> Seg-Sex: 9h às 17h</p>
+                                        <p><i class="fas fa-recycle"></i> Papel, Plástico</p>
+                                    </div>
+                                    <div class="ponto-actions">
+                                        <button class="btn-primary"><i class="fas fa-calendar-plus"></i> Agendar Coleta</button>
+                                    </div>
+                                </div>
+
+                                <div class="ponto-card">
+                                    <div class="ponto-header">
+                                        <h4>Empresa ABC</h4>
+                                        <span class="ponto-status active">Ativo</span>
+                                    </div>
+                                    <div class="ponto-details">
+                                        <p><i class="fas fa-map-marker-alt"></i> Av. Rio Branco, 100 - Rio de Janeiro, RJ</p>
+                                        <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 17h</p>
+                                        <p><i class="fas fa-recycle"></i> Vidro, Eletrônicos</p>
+                                    </div>
+                                    <div class="ponto-actions">
+                                        <button class="btn-primary"><i class="fas fa-calendar-plus"></i> Agendar Coleta</button>
+                                    </div>
+                                </div>
+
+                                <div class="ponto-card">
+                                    <div class="ponto-header">
+                                        <h4>Empresa DEF</h4>
+                                        <span class="ponto-status active">Ativo</span>
+                                    </div>
+                                    <div class="ponto-details">
+                                        <p><i class="fas fa-map-marker-alt"></i> Av. Afonso Pena, 500 - Belo Horizonte, MG</p>
+                                        <p><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h</p>
+                                        <p><i class="fas fa-recycle"></i> Papel, Orgânicos</p>
+                                    </div>
+                                    <div class="ponto-actions">
+                                        <button class="btn-primary"><i class="fas fa-calendar-plus"></i> Agendar Coleta</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mensagens Page -->
+                    <div id="instituicao-mensagens" class="dashboard-page">
+                        <h1>Mensagens</h1>
+                        <div class="mensagens-container">
+                            <div class="mensagens-sidebar">
+                                <div class="mensagens-search">
+                                    <input type="text" placeholder="Buscar conversa...">
+                                    <button><i class="fas fa-search"></i></button>
+                                </div>
+                                <div class="mensagens-list">
+                                    <div class="mensagem-item active">
+                                        <!-- Replace placeholder logos in the mensagens section -->
+                                        <div class="mensagem-avatar">
+
+                                        </div>
+                                        <div class="mensagem-preview">
+                                            <div class="mensagem-header">
+                                                <h3>Empresa XYZ</h3>
+                                                <span class="mensagem-time">10:30</span>
+                                            </div>
+                                            <p>Olá, gostaríamos de agendar uma coleta para a próxima semana...</p>
+                                        </div>
+                                    </div>
+                                    <div class="mensagem-item">
+                                        <div class="mensagem-avatar">
+
+                                        </div>
+                                        <div class="mensagem-preview">
+                                            <div class="mensagem-header">
+                                                <h3>Empresa ABC</h3>
+                                                <span class="mensagem-time">Ontem</span>
+                                            </div>
+                                            <p>Obrigado pela coleta de ontem. Temos mais materiais para...</p>
+                                        </div>
+                                    </div>
+                                    <div class="mensagem-item">
+                                        <div class="mensagem-avatar">
+
+                                        </div>
+                                        <div class="mensagem-preview">
+                                            <div class="mensagem-header">
+                                                <h3>Empresa DEF</h3>
+                                                <span class="mensagem-time">20/04</span>
+                                            </div>
+                                            <p>Gostaríamos de saber se vocês coletam resíduos orgânicos...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mensagens-chat">
+                                <div class="chat-header">
+                                    <div class="chat-contact">
+                                        
+                                        <h3>Empresa XYZ</h3>
+                                    </div>
+                                    <div class="chat-actions">
+                                        <button title="Ligar"><i class="fas fa-phone"></i></button>
+                                        <button title="Videochamada"><i class="fas fa-video"></i></button>
+                                        <button title="Mais opções"><i class="fas fa-ellipsis-v"></i></button>
+                                    </div>
+                                </div>
+                                <div class="chat-messages">
+                                    <div class="message-date">Hoje</div>
+                                    <div class="message received">
+                                        <div class="message-content">
+                                            <p>Olá, gostaríamos de agendar uma coleta para a próxima semana. Temos aproximadamente 30kg de papel e plástico.</p>
+                                        </div>
+                                        <span class="message-time">10:30</span>
+                                    </div>
+                                    <div class="message sent">
+                                        <div class="message-content">
+                                            <p>Olá! Claro, podemos agendar. Quais dias e horários seriam melhores para vocês?</p>
+                                        </div>
+                                        <span class="message-time">10:35</span>
+                                    </div>
+                                    <div class="message received">
+                                        <div class="message-content">
+                                            <p>Terça ou quinta-feira pela manhã seria ideal para nós.</p>
+                                        </div>
+                                        <span class="message-time">10:40</span>
+                                    </div>
+                                    <div class="message sent">
+                                        <div class="message-content">
+                                            <p>Perfeito! Podemos agendar para quinta-feira às 10h. Está bom para vocês?</p>
+                                        </div>
+                                        <span class="message-time">10:45</span>
+                                    </div>
+                                </div>
+                                <div class="chat-input">
+                                    <input type="text" placeholder="Digite sua mensagem...">
+                                    <div class="chat-input-actions">
+                                        <button title="Anexar arquivo"><i class="fas fa-paperclip"></i></button>
+                                        <button title="Enviar emoji"><i class="fas fa-smile"></i></button>
+                                        <button class="send-btn" title="Enviar mensagem"><i class="fas fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Perfil Page -->
+                    <div id="instituicao-perfil" class="dashboard-page">
+                        <h1>Perfil</h1>
+                        <div class="profile-container">
+                            <div class="profile-header">
+                                <!-- Replace placeholder logo in the profile section -->
+                                <div class="profile-info">
+                                    <h2>Instituição de Reciclagem Verde</h2>
+                                    <p>instituicao@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="profile-form">
+                                <form>
+                                    <div class="form-section">
+                                        <h3>Informações Básicas</h3>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="nome-instituicao">Nome da Instituição</label>
+                                                <input type="text" id="nome-instituicao" value="Instituição de Reciclagem Verde">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email-instituicao">Email</label>
+                                                <input type="email" id="email-instituicao" value="instituicao@gmail.com">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="telefone-instituicao">Telefone</label>
+                                                <input type="tel" id="telefone-instituicao" value="(11) 1234-5678">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="site-instituicao">Site</label>
+                                                <input type="url" id="site-instituicao" value="www.instituicaoreciclagem.com">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section">
+                                        <h3>Endereço</h3>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="cep-instituicao">CEP</label>
+                                                <input type="text" id="cep-instituicao" value="01310-100">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="estado-instituicao">Estado</label>
+                                                <input type="text" id="estado-instituicao" value="São Paulo">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="cidade-instituicao">Cidade</label>
+                                                <input type="text" id="cidade-instituicao" value="São Paulo">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="bairro-instituicao">Bairro</label>
+                                                <input type="text" id="bairro-instituicao" value="Bela Vista">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="endereco-instituicao">Endereço</label>
+                                            <input type="text" id="endereco-instituicao" value="Av. Paulista, 1000">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section">
+                                        <h3>Tipos de Resíduos Coletados</h3>
+                                        <div class="residuos-checkboxes">
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="papel" checked>
+                                                <label for="papel">Papel</label>
+                                            </div>
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="plastico" checked>
+                                                <label for="plastico">Plástico</label>
+                                            </div>
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="metal" checked>
+                                                <label for="metal">Metal</label>
+                                            </div>
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="vidro" checked>
+                                                <label for="vidro">Vidro</label>
+                                            </div>
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="eletronicos" checked>
+                                                <label for="eletronicos">Eletrônicos</label>
+                                            </div>
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="organicos">
+                                                <label for="organicos">Orgânicos</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section">
+                                        <h3>Segurança</h3>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="senha-atual">Senha Atual</label>
+                                                <input type="password" id="senha-atual">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nova-senha">Nova Senha</label>
+                                                <input type="password" id="nova-senha">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <button type="button" class="btn-secondary">Cancelar</button>
+                                        <button type="submit" class="btn-primary">Salvar Alterações</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empresa Dashboard -->
+        <div id="empresa-dashboard" class="page">
+            <div class="dashboard-container">
+                <div class="sidebar">
+                    <div class="sidebar-header">
+                        <div class="logo">
+                            <i class="fas fa-recycle"></i> EcoPar
+                        </div>
+                        <span class="user-type">Empresa</span>
+                    </div>
+                    <nav class="sidebar-nav">
+                        <ul>
+                            <li class="active" data-page="empresa-home">
+                                <i class="fas fa-home"></i> Dashboard
+                            </li>
+                            <li data-page="empresa-agendamentos">
+                                <i class="fas fa-calendar-alt"></i> Agendamentos
+                            </li>
+                            <li data-page="empresa-pontos">
+                                <i class="fas fa-map-marker-alt"></i> Pontos de Coleta
+                            </li>
+                            <li data-page="empresa-instituicoes">
+                                <i class="fas fa-building"></i> Instituições
+                            </li>
+                            <li data-page="empresa-mensagens">
+                                <i class="fas fa-envelope"></i> Mensagens
+                            </li>
+                            <li data-page="empresa-perfil">
+                                <i class="fas fa-user"></i> Perfil
+                            </li>
+                            <li id="logout-btn-empresa">
+                                <i class="fas fa-sign-out-alt"></i> Sair
+                            </li>
+                            <li class="theme-toggle">
+                                <i class="fas fa-moon"></i> Tema
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="dashboard-content">
+                    <!-- Home Page -->
+                    <div id="empresa-home" class="dashboard-page active">
+                        <div class="page-header">
+                            <h1>Dashboard</h1>
+                            <div class="user-welcome">
+                                <span>Bem-vindo, Empresa XYZ</span>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-cards">
+                            <div class="dashboard-card">
+                                <i class="fas fa-recycle"></i>
+                                <h3>Total de Resíduos Reciclados</h3>
+                                <p>850 kg</p>
+                            </div>
+                            <div class="dashboard-card">
+                                <i class="fas fa-calendar-check"></i>
+                                <h3>Coletas Realizadas</h3>
+                                <p>32</p>
+                            </div>
+                            <div class="dashboard-card">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <h3>Pontos de Coleta</h3>
+                                <p>3</p>
+                            </div>
+                            <div class="dashboard-card">
+                                <i class="fas fa-building"></i>
+                                <h3>Instituições Parceiras</h3>
+                                <p>5</p>
+                            </div>
+                        </div>
+
+                        <div class="recent-activity">
+                            <h2>Atividades Recentes</h2>
+                            <ul>
+                                <li>
+                                    <div class="activity-icon">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4>Coleta Realizada</h4>
+                                        <p>Instituição ABC - 30kg de papel e plástico</p>
+                                        <span class="activity-time">Hoje, 14:30</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="activity-icon">
+                                        <i class="fas fa-plus-circle"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4>Novo Ponto de Coleta</h4>
+                                        <p>Adicionado ponto de coleta: Filial 2</p>
+                                        <span class="activity-time">Ontem, 10:15</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="activity-icon">
+                                        <i class="fas fa-handshake"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4>Nova Parceria</h4>
+                                        <p>Instituição DEF se tornou parceira</p>
+                                        <span class="activity-time">18/05/2023, 16:45</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="stats-container">
+                            <h2>Estatísticas de Reciclagem</h2>
+                            <div class="stats-chart">
+                                <!-- Gráfico será inserido via JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Agendamentos Page -->
+                    <div id="empresa-agendamentos" class="dashboard-page">
+                        <div class="page-header">
+                            <h1>Agendamentos</h1>
+                            <button class="btn-primary"><i class="fas fa-plus"></i> Solicitar Coleta</button>
+                        </div>
+
+                        <div class="tabs">
+                            <div class="tab active" data-tab="empresa-pendentes-tab">Pendentes</div>
+                            <div class="tab" data-tab="empresa-confirmados-tab">Confirmados</div>
+                            <div class="tab" data-tab="empresa-concluidos-tab">Concluídos</div>
+                        </div>
+
+                        <div class="tab-content">
+                            <div id="empresa-pendentes-tab" class="tab-pane active">
+                                <div class="agendamento-card">
+                                    <div class="agendamento-header">
+                                        <div class="agendamento-empresa">
+                                            <h3>Instituição ABC</h3>
+                                        </div>
+                                        <span class="agendamento-status pending">Pendente</span>
+                                    </div>
+                                    <div class="agendamento-details">
+                                        <p><i class="fas fa-calendar-alt"></i> Data: 25/05/2023</p>
+                                        <p><i class="fa fa-certificate"></i>Plano: Premium</p>
+                                        <p><i class="fas fa-clock"></i> Horário: 14:00</p>
+                                        <p><i class="fas fa-map-marker-alt"></i> Local: Sede Principal</p>
+                                        <p><i class="fas fa-recycle"></i> Resíduos: Papel, Plástico</p>
+                                        <p><i class="fas fa-info-circle"></i> Observações: Aguardando confirmação da instituição.</p>
+                                    </div>
+                                    <div class="agendamento-actions">
+                                        <button class="btn-secondary"><i class="fas fa-times"></i> Cancelar Solicitação</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="empresa-confirmados-tab" class="tab-pane">
+                                <div class="agendamento-card">
+                                    <div class="agendamento-header">
+                                        <div class="agendamento-empresa">
+                                            <h3>Instituição DEF</h3>
+                                        </div>
+                                        <span class="agendamento-status confirmed">Confirmado</span>
+                                    </div>
+                                    <div class="agendamento-details">
+                                        <p><i class="fas fa-calendar-alt"></i> Data: 22/05/2023</p>
+                                        <p><i class="fa fa-certificate"></i>Plano: Básico</p>
+                                        <p><i class="fas fa-clock"></i> Horário: 10:00</p>
+                                        <p><i class="fas fa-map-marker-alt"></i> Local: Filial 1</p>
+                                        <p><i class="fas fa-recycle"></i> Resíduos: Papel</p>
+                                        <p><i class="fas fa-info-circle"></i> Observações: Coleta confirmada pela instituição.</p>
+                                    </div>
+                                    <div class="agendamento-actions">
+                                        <button class="btn-secondary"><i class="fas fa-calendar-alt"></i> Solicitar Reagendamento</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="empresa-concluidos-tab" class="tab-pane">
+                                <div class="agendamento-card">
+                                    <div class="agendamento-header">
+                                        <div class="agendamento-empresa">
+                                            <h3>Instituição ABC</h3>
+                                        </div>
+                                        <span class="agendamento-status completed">Concluído</span>
+                                    </div>
+                                    <div class="agendamento-details">
+                                        <p><i class="fas fa-calendar-alt"></i> Data: 15/05/2023</p>
+                                        <p><i class="fa fa-certificate"></i>Plano: Deluxe</p>
+                                        <p><i class="fas fa-clock"></i> Horário: 14:00</p>
+                                        <p><i class="fas fa-map-marker-alt"></i> Local: Sede Principal</p>
+                                        <p><i class="fas fa-recycle"></i> Resíduos: Papel, Plástico</p>
+                                        <p><i class="fas fa-weight"></i> Quantidade coletada: 30kg</p>
+                                    </div>
+                                    <div class="agendamento-actions">
+                                        <button class="btn-primary"><i class="fas fa-file-alt"></i> Ver Relatório</button>
+                                        <button class="btn-secondary"><i class="fas fa-star"></i> Avaliar Coleta</button>
+                                    </div>
+                                </div>
+
+                                <div class="agendamento-card">
+                                    <div class="agendamento-header">
+                                        <div class="agendamento-empresa">
+                                            <h3>Instituição DEF</h3>
+                                        </div>
+                                        <span class="agendamento-status completed">Concluído</span>
+                                    </div>
+                                    <div class="agendamento-details">
+                                        <p><i class="fas fa-calendar-alt"></i> Data: 01/05/2023</p>
+                                        <p><i class="fa fa-certificate"></i>Plano: Básico</p>
+                                        <p><i class="fas fa-clock"></i> Horário: 11:00</p>
+                                        <p><i class="fas fa-map-marker-alt"></i> Local: Sede Principal</p>
+                                        <p><i class="fas fa-recycle"></i> Resíduos: Metal, Vidro</p>
+                                        <p><i class="fas fa-weight"></i> Quantidade coletada: 25kg</p>
+                                    </div>
+                                    <div class="agendamento-actions">
+                                        <button class="btn-primary"><i class="fas fa-file-alt"></i> Ver Relatório</button>
+                                        <button class="btn-secondary"><i class="fas fa-star"></i> Avaliar Coleta</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pontos de Coleta Page -->
+                    <div id="empresa-pontos" class="dashboard-page">
+                        <div class="page-header">
+                            <h1>Pontos de Coleta</h1>
+                            <button class="btn-primary"><i class="fas fa-plus"></i> Adicionar Ponto</button>
+                        </div>
+
+                        <div class="pontos-map">
+                            <div id="map-empresa" class="map-container"></div>
+                            <div class="map-controls">
+                                <button class="map-control-btn" title="Zoom In"><i class="fas fa-plus"></i></button>
+                                <button class="map-control-btn" title="Zoom Out"><i class="fas fa-minus"></i></button>
+                                <button class="map-control-btn" title="Minha Localização"><i class="fas fa-location-arrow"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="pontos-list">
+                            <h2>Meus Pontos de Coleta</h2>
+                            <div class="pontos-grid">
+                                <div class="ponto-card">
+                                    <div class="ponto-header">
+                                        <h4>Sede Principal</h4>
+                                        <span class="ponto-status active">Ativo</span>
+                                    </div>
+                                    <div class="ponto-details">
+                                        <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo, SP</p>
+                                        <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 18h</p>
+                                        <p><i class="fas fa-recycle"></i> Papel, Plástico, Metal</p>
+                                    </div>
+                                    <div class="ponto-actions">
+                                        <button class="btn-primary"><i class="fas fa-edit"></i> Editar</button>
+                                        <button class="btn-secondary"><i class="fas fa-trash-alt"></i> Remover</button>
+                                    </div>
+                                </div>
+
+                                <div class="ponto-card">
+                                    <div class="ponto-header">
+                                        <h4>Filial 1</h4>
+                                        <span class="ponto-status active">Ativo</span>
+                                    </div>
+                                    <div class="ponto-details">
+                                        <p><i class="fas fa-map-marker-alt"></i> Rua Augusta, 500 - São Paulo, SP</p>
+                                        <p><i class="fas fa-clock"></i> Seg-Sex: 9h às 17h</p>
+                                        <p><i class="fas fa-recycle"></i> Papel, Plástico</p>
+                                    </div>
+                                    <div class="ponto-actions">
+                                        <button class="btn-primary"><i class="fas fa-edit"></i> Editar</button>
+                                        <button class="btn-secondary"><i class="fas fa-trash-alt"></i> Remover</button>
+                                    </div>
+                                </div>
+
+                                <div class="ponto-card">
+                                    <div class="ponto-header">
+                                        <h4>Filial 2</h4>
+                                        <span class="ponto-status active">Ativo</span>
+                                    </div>
+                                    <div class="ponto-details">
+                                        <p><i class="fas fa-map-marker-alt"></i> Av. Brigadeiro Faria Lima, 2000 - São Paulo, SP</p>
+                                        <p><i class="fas fa-clock"></i> Seg-Sex: 8h às 17h</p>
+                                        <p><i class="fas fa-recycle"></i> Papel, Plástico, Eletrônicos</p>
+                                    </div>
+                                    <div class="ponto-actions">
+                                        <button class="btn-primary"><i class="fas fa-edit"></i> Editar</button>
+                                        <button class="btn-secondary"><i class="fas fa-trash-alt"></i> Remover</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instituições Page -->
+                    <div id="empresa-instituicoes" class="dashboard-page">
+                        <h1>Instituições Parceiras</h1>
+                        <div class="page-header">
+                            <div class="search-container">
+                                <input type="text" id="instituicao-search" placeholder="Buscar instituição...">
+                                <button class="search-btn"><i class="fas fa-search"></i></button>
+                            </div>
+                            <div class="page-actions">
+                                <button class="btn-secondary"><i class="fas fa-filter"></i> Filtrar</button>
+                            </div>
+                        </div>
+
+                        <div class="instituicoes-list">
+                            <div class="instituicao-card">
+                                <div class="instituicao-logo">
+                                </div>
+                                <div class="instituicao-info">
+                                    <h3>Instituição ABC</h3>
+                                    <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+                                    <p><i class="fas fa-recycle"></i> Papel, Plástico</p>
+                                    <p><i class="fas fa-calendar-check"></i> 12 coletas realizadas</p>
+                                </div>
+                                <div class="instituicao-actions">
+                                    <button class="btn-primary view-profile">Ver Perfil</button>
+                                    <button class="btn-secondary"><i class="fas fa-envelope"></i> Enviar Mensagem</button>
+                                </div>
+                            </div>
+
+                            <div class="instituicao-card">
+                                <div class="instituicao-logo">
+                                </div>
+                                <div class="instituicao-info">
+                                    <h3>Instituição DEF</h3>
+                                    <p><i class="fas fa-map-marker-alt"></i> Rio de Janeiro, RJ</p>
+                                    <p><i class="fas fa-recycle"></i> Metal, Vidro</p>
+                                    <p><i class="fas fa-calendar-check"></i> 8 coletas realizadas</p>
+                                </div>
+                                <div class="instituicao-actions">
+                                    <button class="btn-primary view-profile">Ver Perfil</button>
+                                    <button class="btn-secondary"><i class="fas fa-envelope"></i> Enviar Mensagem</button>
+                                </div>
+                            </div>
+
+                            <div class="instituicao-card">
+                                <div class="instituicao-logo">
+                                </div>
+                                <div class="instituicao-info">
+                                    <h3>Instituição GHI</h3>
+                                    <p><i class="fas fa-map-marker-alt"></i> Belo Horizonte, MG</p>
+                                    <p><i class="fas fa-recycle"></i> Eletrônicos</p>
+                                    <p><i class="fas fa-calendar-check"></i> 5 coletas realizadas</p>
+                                </div>
+                                <div class="instituicao-actions">
+                                    <button class="btn-primary view-profile">Ver Perfil</button>
+                                    <button class="btn-secondary"><i class="fas fa-envelope"></i> Enviar Mensagem</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mensagens Page -->
+                    <div id="empresa-mensagens" class="dashboard-page">
+                        <h1>Mensagens</h1>
+                        <div class="mensagens-container">
+                            <div class="mensagens-sidebar">
+                                <div class="mensagens-search">
+                                    <input type="text" placeholder="Buscar conversa...">
+                                    <button><i class="fas fa-search"></i></button>
+                                </div>
+                                <div class="mensagens-list">
+                                    <div class="mensagem-item active">
+                                        <div class="mensagem-avatar">
+                                        </div>
+                                        <div class="mensagem-preview">
+                                            <div class="mensagem-header">
+                                                <h3>Instituição ABC</h3>
+                                                <span class="mensagem-time">14:30</span>
+                                            </div>
+                                            <p>Olá, confirmamos a coleta para amanhã...</p>
+                                        </div>
+                                    </div>
+                                    <div class="mensagem-item">
+                                        <div class="mensagem-avatar">
+                                        </div>
+                                        <div class="mensagem-preview">
+                                            <div class="mensagem-header">
+                                                <h3>Instituição DEF</h3>
+                                                <span class="mensagem-time">Ontem</span>
+                                            </div>
+                                            <p>Gostaríamos de agendar uma nova coleta...</p>
+                                        </div>
+                                    </div>
+                                    <div class="mensagem-item">
+                                        <div class="mensagem-avatar">
+                                        </div>
+                                        <div class="mensagem-preview">
+                                            <div class="mensagem-header">
+                                                <h3>Instituição GHI</h3>
+                                                <span class="mensagem-time">20/05</span>
+                                            </div>
+                                            <p>Agradecemos a parceria...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mensagens-chat">
+                                <div class="chat-header">
+                                    <div class="chat-contact">
+                                        <h3>Instituição ABC</h3>
+                                    </div>
+                                    <div class="chat-actions">
+                                        <button title="Ligar"><i class="fas fa-phone"></i></button>
+                                        <button title="Videochamada"><i class="fas fa-video"></i></button>
+                                        <button title="Mais opções"><i class="fas fa-ellipsis-v"></i></button>
+                                    </div>
+                                </div>
+                                <div class="chat-messages">
+                                    <div class="message-date">Hoje</div>
+                                    <div class="message received">
+                                        <div class="message-content">
+                                            <p>Olá, confirmamos a coleta para amanhã às 10h.</p>
+                                        </div>
+                                        <span class="message-time">14:30</span>
+                                    </div>
+                                    <div class="message sent">
+                                        <div class="message-content">
+                                            <p>Ótimo! Obrigado pela confirmação.</p>
+                                        </div>
+                                        <span class="message-time">14:32</span>
+                                    </div>
+                                    <div class="message received">
+                                        <div class="message-content">
+                                            <p>Até amanhã!</p>
+                                        </div>
+                                        <span class="message-time">14:35</span>
+                                    </div>
+                                </div>
+                                <div class="chat-input">
+                                    <input type="text" placeholder="Digite sua mensagem...">
+                                    <div class="chat-input-actions">
+                                        <button title="Anexar arquivo"><i class="fas fa-paperclip"></i></button>
+                                        <button title="Enviar emoji"><i class="fas fa-smile"></i></button>
+                                        <button class="send-btn" title="Enviar mensagem"><i class="fas fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Perfil Page -->
+                    <div id="empresa-perfil" class="dashboard-page">
+                        <h1>Perfil</h1>
+                        <div class="profile-container">
+                            <div class="profile-header">
+                                <div class="profile-info">
+                                    <h2>Empresa XYZ</h2>
+                                    <p>Empresa de tecnologia</p>
+                                </div>
+                            </div>
+                            <div class="profile-form">
+                                <form>
+                                    <div class="form-section">
+                                        <h3>Informações Básicas</h3>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="nome">Nome da Empresa</label>
+                                                <input type="text" id="nome" value="Empresa XYZ">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cnpj">CNPJ</label>
+                                                <input type="text" id="cnpj" value="12.345.678/0001-90">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="email" id="email" value="contato@empresaxyz.com">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="telefone">Telefone</label>
+                                                <input type="tel" id="telefone" value="(11) 1234-5678">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section">
+                                        <h3>Endereço</h3>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="cep">CEP</label>
+                                                <input type="text" id="cep" value="01310-100">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cidade">Cidade</label>
+                                                <input type="text" id="cidade" value="São Paulo">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="estado">Estado</label>
+                                                <input type="text" id="estado" value="SP">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="endereco">Endereço Completo</label>
+                                            <input type="text" id="endereco" value="Av. Paulista, 1000, Bela Vista">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section">
+                                        <h3>Resíduos que Produz</h3>
+                                        <div class="residuos-checkboxes">
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="papel" checked>
+                                                <label for="papel">Papel</label>
+                                            </div>
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="plastico" checked>
+                                                <label for="plastico">Plástico</label>
+                                            </div>
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="metal">
+                                                <label for="metal">Metal</label>
+                                            </div>
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="vidro">
+                                                <label for="vidro">Vidro</label>
+                                            </div>
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="eletronicos">
+                                                <label for="eletronicos">Eletrônicos</label>
+                                            </div>
+                                            <div class="checkbox-group">
+                                                <input type="checkbox" id="organicos">
+                                                <label for="organicos">Orgânicos</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section">
+                                        <h3>Descrição</h3>
+                                        <div class="form-group">
+                                            <textarea id="descricao" rows="5">A Empresa XYZ é uma empresa de tecnologia comprometida com a sustentabilidade e a gestão responsável de resíduos. Buscamos constantemente reduzir nosso impacto ambiental e promover a reciclagem em todas as nossas operações.</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-section">
+                                        <h3>Alterar Senha</h3>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="senha-atual">Senha Atual</label>
+                                                <input type="password" id="senha-atual">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nova-senha">Nova Senha</label>
+                                                <input type="password" id="nova-senha">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="confirmar-senha">Confirmar Nova Senha</label>
+                                                <input type="password" id="confirmar-senha">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <button type="button" class="btn-secondary">Cancelar</button>
+                                        <button type="submit" class="btn-primary">Salvar Alterações</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para carregar conteúdo das abas -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Carregar conteúdo das abas
+            //fetch('empresa-instituicoes.html')
+            //    .then(response => response.text())
+            //    .then(html => {
+            //        document.getElementById('empresa-instituicoes').outerHTML = html;
+            //    });
+            //
+            //fetch('empresa-mensagens.html')
+            //    .then(response => response.text())
+            //    .then(html => {
+            //        document.getElementById('empresa-mensagens').outerHTML = html;
+            //    });
+            //
+            //fetch('empresa-perfil.html')
+            //    .then(response => response.text())
+            //    .then(html => {
+            //        document.getElementById('empresa-perfil').outerHTML = html;
+            //    });
+
+            // Dados para o gráfico (exemplo)
+            const data = {
+                labels: ['Papel', 'Plástico', 'Metal', 'Vidro', 'Eletrônicos'],
+                datasets: [{
+                    label: 'Resíduos Reciclados (kg)',
+                    data: [300, 250, 150, 100, 50],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            // Configuração do gráfico
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+
+            // Renderizar o gráfico
+            const statsChartDiv = document.querySelector('.stats-chart');
+            const canvas = document.createElement('canvas');
+            statsChartDiv.appendChild(canvas);
+            const myChart = new Chart(
+                canvas.getContext('2d'),
+                config
+            );
+        });
+    </script>
+</body>
+</html>
