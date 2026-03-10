@@ -22,13 +22,6 @@ Este projeto foi criado com finalidade educacional, visando exercitar habilidade
 - GitHub
 - IDE: Visual Studio Code
 
-## ▶️ Como executar o projeto
-
-1. Clone o repositório:
-
-```bash
-git clone https://github.com/rcosmo-m/projetofortes.git
-
 ## 🔑 Credenciais de Teste
 
 Para facilitar a demonstração do sistema, utilize os seguintes logins:
@@ -44,4 +37,12 @@ Para facilitar a demonstração do sistema, utilize os seguintes logins:
 * **Senha:** 123
 
 ⚠️ Essas credenciais são apenas para **teste e demonstração do sistema**.
+
+## ▶️ Como executar o projeto
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/rcosmo-m/projetofortes.git
+
 
