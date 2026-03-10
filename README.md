@@ -17,7 +17,7 @@ Este projeto foi criado com finalidade educacional, visando exercitar habilidade
 
 ## 🛠 Tecnologias utilizadas
 
-- Linguagem: HTML | CSS | Javascript 
+- Linguagem: HTML | CSS | JavaScript 
 - Git
 - GitHub
 - IDE: Visual Studio Code
