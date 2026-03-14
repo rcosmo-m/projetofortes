@@ -70,20 +70,20 @@
 }
 
 /* Ajustes para tema escuro */
-[data-theme="dark"] .map-info-window {
+[data-theme='dark'] .map-info-window {
   background-color: #1a1a1a;
   color: var(--text-color);
 }
 
-[data-theme="dark"] .gm-style .gm-style-iw-c {
+[data-theme='dark'] .gm-style .gm-style-iw-c {
   background-color: #1a1a1a;
 }
 
-[data-theme="dark"] .gm-style .gm-style-iw-d {
+[data-theme='dark'] .gm-style .gm-style-iw-d {
   background-color: #1a1a1a;
 }
 
-[data-theme="dark"] .gm-style .gm-style-iw-t::after {
+[data-theme='dark'] .gm-style .gm-style-iw-t::after {
   background: #1a1a1a;
 }
 
